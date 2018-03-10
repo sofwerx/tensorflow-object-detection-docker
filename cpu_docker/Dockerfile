@@ -35,6 +35,7 @@ WORKDIR models
 WORKDIR research
 RUN protoc object_detection/protos/*.proto --python_out=.
 RUN export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
+RUN python setup.py install
 
 # Test the installation - https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md
 # once you are done building/pulling the image.

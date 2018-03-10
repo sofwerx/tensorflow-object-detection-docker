@@ -7,11 +7,12 @@ docker build -t your_docker_username/prefered_imagename:1.5.0-devel . --no-cache
   - Start your docker container
     - Find the image id of your docker container by typing - docker images
     - Once you find the image id
-      - docker run -i -t image_id_here bash 
+      - docker run -i -t image_id_here bash
   - Once you run your docker container, do the following:
     - Navigate to /tensorflow/models/research
     - protoc object_detection/protos/*.proto --python_out=.
     - export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
+    - python setup.py install 
 
   - export_inference_graph error:
     - If you are facing any problem when you run export_inference_graph:

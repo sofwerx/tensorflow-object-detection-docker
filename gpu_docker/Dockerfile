@@ -1,10 +1,10 @@
 FROM gcr.io/tensorflow/tensorflow:1.5.0-devel-gpu
 RUN apt-get update && apt-get install -y \
-  git 
+  git
 
 RUN apt-get install -y protobuf-compiler \
   python-lxml \
-  python-pil  
+  python-pil
 
 # change to tensorflow dir
 WORKDIR /tensorflow
@@ -16,6 +16,7 @@ WORKDIR models/research
 
 RUN protoc object_detection/protos/*.proto --python_out=.
 RUN export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
+RUN python setup.py install
 
 
 CMD ["echo", "Running tensorflow docker"]
