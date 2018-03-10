@@ -12,7 +12,6 @@ docker build -t your_docker_username/prefered_imagename:1.5.0-devel . --no-cache
     - Navigate to /tensorflow/models/research
     - protoc object_detection/protos/*.proto --python_out=.
     - export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
-    - python setup.py install 
 
   - export_inference_graph error:
     - If you are facing any problem when you run export_inference_graph:
