@@ -34,7 +34,7 @@ RUN git clone https://github.com/tensorflow/models.git
 WORKDIR models
 WORKDIR research
 RUN protoc object_detection/protos/*.proto --python_out=.
-RUN export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
+RUN echo "export PYTHONPATH=${PYTHONPATH}:`pwd`:`pwd`/slim" >> ~/.bashrc
 RUN python setup.py install
 
 # Test the installation - https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md
