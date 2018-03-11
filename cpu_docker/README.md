@@ -19,3 +19,10 @@ docker build -t your_docker_username/prefered_imagename:1.5.0-devel . --no-cache
 
 ### References
   - [repo](https://github.com/sofwerx/android-tensorflow-object-detection/blob/master/Dockerfile) with additions/modifications based on [tensorflow installation](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/installation.md)
+
+### Useful commands
+  - Mount a local folder inside docker
+    - docker run -it -v "$(pwd)":/folder_to_mnt IMAGE_ID bash
+
+### Common errors:
+  - When running python train.py from object_detection folder, if you are getting "ImportError: No module named deployment", then navigate to models/research folder and run export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
