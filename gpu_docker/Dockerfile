@@ -22,12 +22,21 @@ WORKDIR /tensorflow
 
 # clone the models repo
 RUN git clone https://github.com/tensorflow/models.git
+RUN curl -OL https://github.com/google/protobuf/releases/download/v3.2.0/protoc-3.2.0-linux-x86_64.zip
+RUN unzip protoc-3.2.0-linux-x86_64.zip -d protoc3
+RUN mv protoc3/bin/* /usr/local/bin/
+RUN mv protoc3/include/* /usr/local/include/
+
+
+#RUN git reset --hard 490813bdb3499290633919a9867eb0bb6d346d87
 
 WORKDIR models/research
 
 RUN protoc object_detection/protos/*.proto --python_out=.
 RUN echo "export PYTHONPATH=${PYTHONPATH}:`pwd`:`pwd`/slim" >> ~/.bashrc
 RUN python setup.py install
+
+
 
 
 CMD ["echo", "Running tensorflow docker"]
