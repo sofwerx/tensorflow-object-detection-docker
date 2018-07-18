@@ -1,4 +1,4 @@
-FROM gcr.io/tensorflow/tensorflow:1.5.0-devel-gpu
+FROM tensorflow/tensorflow:1.5.0-devel-gpu
 RUN apt-get update && apt-get install -y \
   git
 
